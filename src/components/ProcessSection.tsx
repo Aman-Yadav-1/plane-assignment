@@ -90,12 +90,16 @@ export default function ProcessSection() {
           />
         </div>
 
-        {/* Interactive Content Area - Fixed Dimensions */}
+        {/* Interactive Content Area - Fixed Dimensions with Double Borders */}
         <div className="mt-16">
-          <div className="w-full h-[600px] bg-white rounded-2xl shadow-xl border border-gray-200 overflow-hidden">
-            {activeStep === 1 && <AuthorizeInterface />}
-            {activeStep === 2 && <MapInterface />}
-            {activeStep === 3 && <SitBackInterface />}
+          {/* Outer border container */}
+          <div className="w-full h-[600px] bg-gray-200 rounded-2xl p-1 shadow-xl">
+            {/* Inner border container */}
+            <div className="w-full h-full bg-white rounded-xl border border-gray-100 overflow-hidden">
+              {activeStep === 1 && <AuthorizeInterface />}
+              {activeStep === 2 && <MapInterface />}
+              {activeStep === 3 && <SitBackInterface />}
+            </div>
           </div>
         </div>
       </div>
@@ -132,10 +136,10 @@ function ProcessStep({
         {description}
       </p>
 
-      {/* Ultra-thin aesthetic progress bar below description */}
+      {/* Ultra-thin aesthetic progress bar below description - 2px thinner */}
       <div className="flex justify-center">
         {isActive && (
-          <div className="w-full bg-gray-200 rounded-full h-0.5">
+          <div className="w-[calc(100%-2px)] bg-gray-200 rounded-full h-0.5">
             <div
               className={`bg-plane-blue h-0.5 rounded-full transition-all duration-7000 ease-out ${
                 isAnimating ? "w-full" : "w-0"
