@@ -128,6 +128,16 @@ export default {
           "0%": { backgroundPosition: "-200% 0" },
           "100%": { backgroundPosition: "200% 0" },
         },
+        breathe: {
+          "0%, 100%": {
+            transform: "scaleY(1)",
+            opacity: "0.6",
+          },
+          "50%": {
+            transform: "scaleY(1.5)",
+            opacity: "1",
+          },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
@@ -136,6 +146,7 @@ export default {
         "slide-in": "slide-in 0.8s ease-out",
         "fade-in-up": "fade-in-up 0.6s ease-out",
         shimmer: "shimmer 2s infinite linear",
+        breathe: "breathe 2s ease-in-out infinite",
       },
       transitionDuration: {
         "7000": "7000ms",
