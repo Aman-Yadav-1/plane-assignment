@@ -4,80 +4,82 @@ import { PlaneBadge } from "@/components/ui/plane-badge";
 export default function HeroSection() {
   return (
     <section className="relative min-h-screen bg-white overflow-hidden">
-      {/* Horizontal curved gradient background elements */}
+      {/* Full width horizontal curved gradient background elements */}
       <div className="absolute inset-0">
-        {/* Left side horizontal curved gradient */}
-        <div className="absolute top-0 left-0 w-2/3 h-full overflow-hidden">
+        {/* Top left to right flowing curve */}
+        <div className="absolute top-0 left-0 w-full h-2/3 overflow-hidden">
           <svg
-            viewBox="0 0 600 400"
+            viewBox="0 0 1000 400"
             className="w-full h-full"
             preserveAspectRatio="none"
           >
             <defs>
-              <radialGradient id="leftGradient" cx="0%" cy="50%" r="120%">
+              <linearGradient
+                id="topGradient"
+                x1="0%"
+                y1="0%"
+                x2="100%"
+                y2="100%"
+              >
                 <stop
                   offset="0%"
                   stopColor="rgb(196, 181, 253)"
-                  stopOpacity="0.4"
+                  stopOpacity="0.3"
                 />
                 <stop
-                  offset="30%"
+                  offset="50%"
                   stopColor="rgb(196, 181, 253)"
-                  stopOpacity="0.25"
-                />
-                <stop
-                  offset="60%"
-                  stopColor="rgb(196, 181, 253)"
-                  stopOpacity="0.15"
+                  stopOpacity="0.2"
                 />
                 <stop
                   offset="100%"
                   stopColor="rgb(196, 181, 253)"
                   stopOpacity="0"
                 />
-              </radialGradient>
+              </linearGradient>
             </defs>
             <path
-              d="M0,0 C200,0 300,50 400,120 C500,190 550,250 600,300 L600,400 L0,400 L0,0 Z"
-              fill="url(#leftGradient)"
+              d="M0,100 C250,80 400,60 600,100 C750,130 850,160 1000,200 L1000,0 L0,0 Z"
+              fill="url(#topGradient)"
             />
           </svg>
         </div>
 
-        {/* Right side horizontal curved gradient */}
-        <div className="absolute top-0 right-0 w-2/3 h-full overflow-hidden">
+        {/* Bottom right to left flowing curve */}
+        <div className="absolute bottom-0 right-0 w-full h-2/3 overflow-hidden">
           <svg
-            viewBox="0 0 600 400"
+            viewBox="0 0 1000 400"
             className="w-full h-full"
             preserveAspectRatio="none"
           >
             <defs>
-              <radialGradient id="rightGradient" cx="100%" cy="50%" r="120%">
+              <linearGradient
+                id="bottomGradient"
+                x1="100%"
+                y1="100%"
+                x2="0%"
+                y2="0%"
+              >
                 <stop
                   offset="0%"
                   stopColor="rgb(196, 181, 253)"
-                  stopOpacity="0.4"
+                  stopOpacity="0.3"
                 />
                 <stop
-                  offset="30%"
+                  offset="50%"
                   stopColor="rgb(196, 181, 253)"
-                  stopOpacity="0.25"
-                />
-                <stop
-                  offset="60%"
-                  stopColor="rgb(196, 181, 253)"
-                  stopOpacity="0.15"
+                  stopOpacity="0.2"
                 />
                 <stop
                   offset="100%"
                   stopColor="rgb(196, 181, 253)"
                   stopOpacity="0"
                 />
-              </radialGradient>
+              </linearGradient>
             </defs>
             <path
-              d="M600,0 C400,0 300,50 200,120 C100,190 50,250 0,300 L0,400 L600,400 L600,0 Z"
-              fill="url(#rightGradient)"
+              d="M1000,300 C750,320 600,340 400,300 C250,270 150,240 0,200 L0,400 L1000,400 Z"
+              fill="url(#bottomGradient)"
             />
           </svg>
         </div>
