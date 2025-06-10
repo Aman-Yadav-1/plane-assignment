@@ -3,10 +3,85 @@ import { PlaneBadge } from "@/components/ui/plane-badge";
 
 export default function HeroSection() {
   return (
-    <section className="relative min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 overflow-hidden">
-      {/* Background decorative elements */}
-      <div className="absolute inset-0 bg-grid-pattern opacity-5"></div>
+    <section className="relative min-h-screen bg-white overflow-hidden">
+      {/* Horizontal curved gradient background elements */}
+      <div className="absolute inset-0">
+        {/* Left side horizontal curved gradient */}
+        <div className="absolute top-0 left-0 w-2/3 h-full overflow-hidden">
+          <svg
+            viewBox="0 0 600 400"
+            className="w-full h-full"
+            preserveAspectRatio="none"
+          >
+            <defs>
+              <radialGradient id="leftGradient" cx="0%" cy="50%" r="120%">
+                <stop
+                  offset="0%"
+                  stopColor="rgb(196, 181, 253)"
+                  stopOpacity="0.4"
+                />
+                <stop
+                  offset="30%"
+                  stopColor="rgb(196, 181, 253)"
+                  stopOpacity="0.25"
+                />
+                <stop
+                  offset="60%"
+                  stopColor="rgb(196, 181, 253)"
+                  stopOpacity="0.15"
+                />
+                <stop
+                  offset="100%"
+                  stopColor="rgb(196, 181, 253)"
+                  stopOpacity="0"
+                />
+              </radialGradient>
+            </defs>
+            <path
+              d="M0,0 C200,0 300,50 400,120 C500,190 550,250 600,300 L600,400 L0,400 L0,0 Z"
+              fill="url(#leftGradient)"
+            />
+          </svg>
+        </div>
 
+        {/* Right side horizontal curved gradient */}
+        <div className="absolute top-0 right-0 w-2/3 h-full overflow-hidden">
+          <svg
+            viewBox="0 0 600 400"
+            className="w-full h-full"
+            preserveAspectRatio="none"
+          >
+            <defs>
+              <radialGradient id="rightGradient" cx="100%" cy="50%" r="120%">
+                <stop
+                  offset="0%"
+                  stopColor="rgb(196, 181, 253)"
+                  stopOpacity="0.4"
+                />
+                <stop
+                  offset="30%"
+                  stopColor="rgb(196, 181, 253)"
+                  stopOpacity="0.25"
+                />
+                <stop
+                  offset="60%"
+                  stopColor="rgb(196, 181, 253)"
+                  stopOpacity="0.15"
+                />
+                <stop
+                  offset="100%"
+                  stopColor="rgb(196, 181, 253)"
+                  stopOpacity="0"
+                />
+              </radialGradient>
+            </defs>
+            <path
+              d="M600,0 C400,0 300,50 200,120 C100,190 50,250 0,300 L0,400 L600,400 L600,0 Z"
+              fill="url(#rightGradient)"
+            />
+          </svg>
+        </div>
+      </div>
       <div className="max-w-1200 mx-auto px-5 pt-22 pb-20">
         <div className="text-center">
           <PlaneBadge className="mb-8">
@@ -38,12 +113,14 @@ export default function HeroSection() {
               <IntegrationIcon name="Monday" comingSoon />
             </div>
 
-            {/* Hero Image Placeholder */}
+            {/* Hero Image */}
             <div className="relative mt-16">
-              <div className="mx-auto w-full max-w-4xl h-96 bg-white rounded-lg shadow-2xl border border-gray-200 flex items-center justify-center">
-                <div className="text-gray-400 text-xl">
-                  Import Dashboard Preview
-                </div>
+              <div className="mx-auto w-full max-w-4xl">
+                <img
+                  src="https://images.plane.so/imports/hero/hero-dark.webp"
+                  alt="Plane imports dashboard preview"
+                  className="w-full h-auto rounded-lg shadow-2xl"
+                />
               </div>
             </div>
           </div>
