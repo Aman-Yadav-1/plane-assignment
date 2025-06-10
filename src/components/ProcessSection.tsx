@@ -19,14 +19,14 @@ export default function ProcessSection() {
     const cycleSteps = () => {
       setIsAnimating(true);
 
-      // After 3 seconds, switch to next step
+      // After 5 seconds, switch to next step
       setTimeout(() => {
         setActiveStep((prev) => {
           if (prev === 3) return 1; // Cycle back to 1 after 3
           return prev + 1;
         });
         setIsAnimating(false);
-      }, 3000);
+      }, 5000);
     };
 
     // Start the cycle after a brief delay
@@ -35,7 +35,7 @@ export default function ProcessSection() {
     }, 500);
 
     // Set up interval for continuous cycling
-    const interval = setInterval(cycleSteps, 4000);
+    const interval = setInterval(cycleSteps, 6000);
 
     return () => {
       clearTimeout(timer);
@@ -128,30 +128,17 @@ function ProcessStep({
         {title}
       </h3>
 
-      {/* Progress bar with pointed end - smaller width than description */}
-      <div className="flex justify-center mb-4">
-        <div className="relative w-24 bg-gray-200 rounded-full h-0.5">
-          {/* Animated progress bar with pointed end */}
-          <div
-            className={`bg-plane-blue h-0.5 rounded-l-full transition-all duration-3000 ease-out relative ${
-              isActive && isAnimating ? "w-full" : isActive ? "w-full" : "w-0"
-            }`}
-          >
-            {/* Pointed arrow end */}
-            {isActive && (
-              <div
-                className={`absolute right-0 top-1/2 transform -translate-y-1/2 w-0 h-0 transition-opacity duration-300 ${
-                  isAnimating ? "opacity-100" : "opacity-0"
-                }`}
-                style={{
-                  borderLeft: "4px solid rgb(65, 119, 253)",
-                  borderTop: "2px solid transparent",
-                  borderBottom: "2px solid transparent",
-                }}
-              />
-            )}
+      {/* Modern progress bar - only show for active step */}
+      <div className="flex justify-center mb-4 h-2">
+        {isActive && (
+          <div className="w-24 bg-gray-200 rounded-full h-0.5">
+            <div
+              className={`bg-plane-blue h-0.5 rounded-full transition-all duration-5000 ease-out ${
+                isAnimating ? "w-full" : "w-0"
+              }`}
+            />
           </div>
-        </div>
+        )}
       </div>
 
       <p className="text-sm text-gray-600 leading-relaxed">{description}</p>

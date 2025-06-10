@@ -133,7 +133,7 @@ export default {
         "fade-in-up": "fade-in-up 0.6s ease-out",
       },
       transitionDuration: {
-        "3000": "3000ms",
+        "5000": "5000ms",
       },
     },
   },
