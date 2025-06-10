@@ -40,7 +40,7 @@ export default function HeroSection() {
               <div className="mx-auto w-full max-w-4xl">
                 <img
                   src="https://images.plane.so/imports/hero/hero-light.webp"
-                  alt="Plane imports dashboard preview"
+                  alt="Plane imports workflow interface"
                   className="w-full h-auto rounded-lg shadow-2xl"
                 />
               </div>
