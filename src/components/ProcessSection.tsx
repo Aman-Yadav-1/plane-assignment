@@ -136,10 +136,10 @@ function ProcessStep({
         {description}
       </p>
 
-      {/* Ultra-thin aesthetic progress bar below description - 2px thinner */}
+      {/* Ultra-thin aesthetic progress bar below description - 12px thinner */}
       <div className="flex justify-center">
         {isActive && (
-          <div className="w-[calc(100%-2px)] bg-gray-200 rounded-full h-0.5">
+          <div className="w-[calc(100%-12px)] bg-gray-200 rounded-full h-0.5">
             <div
               className={`bg-plane-blue h-0.5 rounded-full transition-all duration-7000 ease-out ${
                 isAnimating ? "w-full" : "w-0"
