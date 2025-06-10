@@ -19,6 +19,14 @@ export default {
     },
     extend: {
       colors: {
+        // Plane.so brand colors
+        plane: {
+          blue: "rgb(65, 119, 253)",
+          "blue-alt": "rgb(63, 118, 255)",
+          "blue-light": "rgb(227, 234, 253)",
+          "blue-dark": "rgb(19, 58, 154)",
+        },
+        // Original shadcn colors
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
@@ -63,6 +71,22 @@ export default {
           ring: "hsl(var(--sidebar-ring))",
         },
       },
+      fontSize: {
+        "64": ["64px", "72px"],
+        "56": ["56px", "64px"],
+        "20": ["20px", "28px"],
+      },
+      fontWeight: {
+        "475": "475",
+      },
+      maxWidth: {
+        "1200": "1200px",
+      },
+      spacing: {
+        "18": "4.5rem",
+        "22": "5.5rem",
+        "30": "7.5rem",
+      },
       borderRadius: {
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",
@@ -85,10 +109,25 @@ export default {
             height: "0",
           },
         },
+        float: {
+          "0%, 100%": { transform: "translateY(0px)" },
+          "50%": { transform: "translateY(-10px)" },
+        },
+        "slide-in": {
+          "0%": { transform: "translateX(-100%)", opacity: "0" },
+          "100%": { transform: "translateX(0)", opacity: "1" },
+        },
+        "fade-in-up": {
+          "0%": { transform: "translateY(20px)", opacity: "0" },
+          "100%": { transform: "translateY(0)", opacity: "1" },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
+        float: "float 3s ease-in-out infinite",
+        "slide-in": "slide-in 0.8s ease-out",
+        "fade-in-up": "fade-in-up 0.6s ease-out",
       },
     },
   },
