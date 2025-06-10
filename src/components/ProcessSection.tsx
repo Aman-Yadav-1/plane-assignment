@@ -94,15 +94,16 @@ function ProcessStep({
         {title}
       </h3>
 
-      {/* Very thin progress bar under title */}
-      {isActive && (
-        <div className="w-full bg-gray-200 rounded-full h-0.5 mb-4">
+      {/* Very thin progress bar under title - smaller width than description */}
+      <div className="flex justify-center mb-4">
+        <div className="w-20 bg-gray-200 rounded-full h-0.5">
           <div
-            className="bg-plane-blue h-0.5 rounded-full transition-all duration-1000"
-            style={{ width: "65%" }}
+            className={`bg-plane-blue h-0.5 rounded-full transition-all duration-1000 ease-out ${
+              isActive ? "w-full" : "w-0"
+            }`}
           ></div>
         </div>
-      )}
+      </div>
 
       <p className="text-sm text-gray-600 leading-relaxed">{description}</p>
     </div>
