@@ -296,33 +296,21 @@ function MapInterface() {
           <div className="grid grid-cols-2 gap-6">
             <div className="space-y-3">
               <div className="p-3 bg-gray-50 rounded-lg">
-                <span className="text-sm text-gray-700">Done</span>
-              </div>
-              <div className="p-3 bg-gray-50 rounded-lg">
-                <span className="text-sm text-gray-700">In Progress</span>
-              </div>
-              <div className="p-3 bg-gray-50 rounded-lg">
-                <span className="text-sm text-gray-700">To Do</span>
-              </div>
-            </div>
+                <p className="text-sm text-gray-600 leading-relaxed mb-4">
+                  {description}
+                </p>
 
-            <div className="space-y-3">
-              <div className="p-3 bg-gray-100 rounded-lg">
-                <div className="flex items-center gap-2">
-                  <div className="w-2 h-2 bg-green-500 rounded-full"></div>
-                  <span className="text-sm text-gray-700">Done</span>
-                </div>
-              </div>
-              <div className="p-3 bg-gray-100 rounded-lg">
-                <div className="flex items-center gap-2">
-                  <div className="w-2 h-2 bg-yellow-500 rounded-full"></div>
-                  <span className="text-sm text-gray-700">In Progress</span>
-                </div>
-              </div>
-              <div className="p-3 bg-gray-100 rounded-lg">
-                <div className="flex items-center gap-2">
-                  <div className="w-2 h-2 bg-gray-400 rounded-full"></div>
-                  <span className="text-sm text-gray-700">Todo</span>
+                {/* Clean aesthetic progress bar below description */}
+                <div className="flex justify-center">
+                  {isActive && (
+                    <div className="w-full bg-gray-200 rounded-full h-1">
+                      <div
+                        className={`bg-plane-blue h-1 rounded-full transition-all duration-7000 ease-out ${
+                          isAnimating ? "w-full" : "w-0"
+                        }`}
+                      />
+                    </div>
+                  )}
                 </div>
               </div>
             </div>
