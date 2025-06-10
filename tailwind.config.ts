@@ -124,6 +124,10 @@ export default {
           "0%": { transform: "translateY(20px)", opacity: "0" },
           "100%": { transform: "translateY(0)", opacity: "1" },
         },
+        shimmer: {
+          "0%": { backgroundPosition: "-200% 0" },
+          "100%": { backgroundPosition: "200% 0" },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
@@ -131,6 +135,7 @@ export default {
         float: "float 3s ease-in-out infinite",
         "slide-in": "slide-in 0.8s ease-out",
         "fade-in-up": "fade-in-up 0.6s ease-out",
+        shimmer: "shimmer 2s infinite linear",
       },
       transitionDuration: {
         "7000": "7000ms",

@@ -132,15 +132,26 @@ function ProcessStep({
         {description}
       </p>
 
-      {/* Modern progress bar below description - same width as description */}
+      {/* Aesthetic gradient progress bar below description */}
       <div className="flex justify-center">
         {isActive && (
-          <div className="w-full bg-gray-200 rounded-full h-0.5">
+          <div className="w-full bg-gradient-to-r from-gray-100 to-gray-200 rounded-full h-1 shadow-inner">
             <div
-              className={`bg-plane-blue h-0.5 rounded-full transition-all duration-7000 ease-out ${
+              className={`h-1 rounded-full transition-all duration-7000 ease-out bg-gradient-to-r from-plane-blue via-blue-500 to-plane-blue-alt shadow-sm relative ${
                 isAnimating ? "w-full" : "w-0"
               }`}
-            />
+              style={{
+                backgroundSize: "200% 100%",
+                animation: isAnimating ? "shimmer 2s infinite linear" : "none",
+              }}
+            >
+              {/* Glow effect */}
+              <div
+                className={`absolute inset-0 rounded-full bg-gradient-to-r from-plane-blue/30 via-blue-400/30 to-plane-blue-alt/30 blur-sm transition-all duration-7000 ease-out ${
+                  isAnimating ? "w-full" : "w-0"
+                }`}
+              />
+            </div>
           </div>
         )}
       </div>
