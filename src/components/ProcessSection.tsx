@@ -300,12 +300,12 @@ function MapInterface() {
                   {description}
                 </p>
 
-                {/* Clean aesthetic progress bar below description */}
+                {/* Ultra-thin aesthetic progress bar below description */}
                 <div className="flex justify-center">
                   {isActive && (
-                    <div className="w-full bg-gray-200 rounded-full h-1">
+                    <div className="w-full bg-gray-200 rounded-full h-0.5">
                       <div
-                        className={`bg-plane-blue h-1 rounded-full transition-all duration-7000 ease-out ${
+                        className={`bg-plane-blue h-0.5 rounded-full transition-all duration-7000 ease-out ${
                           isAnimating ? "w-full" : "w-0"
                         }`}
                       />
