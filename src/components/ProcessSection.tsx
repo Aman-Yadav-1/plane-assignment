@@ -19,14 +19,14 @@ export default function ProcessSection() {
     const cycleSteps = () => {
       setIsAnimating(true);
 
-      // After 5 seconds, switch to next step
+      // After 7 seconds, switch to next step
       setTimeout(() => {
         setActiveStep((prev) => {
           if (prev === 3) return 1; // Cycle back to 1 after 3
           return prev + 1;
         });
         setIsAnimating(false);
-      }, 5000);
+      }, 7000);
     };
 
     // Start the cycle after a brief delay
@@ -35,7 +35,7 @@ export default function ProcessSection() {
     }, 500);
 
     // Set up interval for continuous cycling
-    const interval = setInterval(cycleSteps, 6000);
+    const interval = setInterval(cycleSteps, 8000);
 
     return () => {
       clearTimeout(timer);
@@ -121,27 +121,29 @@ function ProcessStep({
   return (
     <div className="text-center cursor-pointer group" onClick={onClick}>
       <h3
-        className={`text-lg font-semibold mb-2 transition-colors ${
+        className={`text-lg font-semibold mb-4 transition-colors ${
           isActive ? "text-plane-blue" : "text-black"
         }`}
       >
         {title}
       </h3>
 
-      {/* Modern progress bar - only show for active step */}
-      <div className="flex justify-center mb-4 h-2">
+      <p className="text-sm text-gray-600 leading-relaxed mb-4">
+        {description}
+      </p>
+
+      {/* Modern progress bar below description - same width as description */}
+      <div className="flex justify-center">
         {isActive && (
-          <div className="w-24 bg-gray-200 rounded-full h-0.5">
+          <div className="w-full bg-gray-200 rounded-full h-0.5">
             <div
-              className={`bg-plane-blue h-0.5 rounded-full transition-all duration-5000 ease-out ${
+              className={`bg-plane-blue h-0.5 rounded-full transition-all duration-7000 ease-out ${
                 isAnimating ? "w-full" : "w-0"
               }`}
             />
           </div>
         )}
       </div>
-
-      <p className="text-sm text-gray-600 leading-relaxed">{description}</p>
     </div>
   );
 }
