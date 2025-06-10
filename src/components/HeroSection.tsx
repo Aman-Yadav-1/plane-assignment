@@ -39,7 +39,7 @@ export default function HeroSection() {
             <div className="relative mt-16">
               <div className="mx-auto w-full max-w-4xl">
                 <img
-                  src="PLACEHOLDER_IMAGE_URL"
+                  src="https://images.plane.so/imports/hero/hero-dark.webp"
                   alt="Plane imports dashboard preview"
                   className="w-full h-auto rounded-lg shadow-2xl"
                 />
