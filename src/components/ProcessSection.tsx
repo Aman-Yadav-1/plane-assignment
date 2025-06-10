@@ -51,7 +51,7 @@ export default function ProcessSection() {
             THE SIMPLEST IMPORTERS ON THE PLANET
           </PlaneBadge>
 
-          <h2 className="text-4xl font-semibold text-black mb-6 leading-tight">
+          <h2 className="text-6xl font-semibold text-black mb-6 leading-tight">
             As easy as 1-2-3
           </h2>
 
