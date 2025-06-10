@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { PlaneBadge } from "@/components/ui/plane-badge";
 import {
@@ -13,6 +13,35 @@ import {
 
 export default function ProcessSection() {
   const [activeStep, setActiveStep] = useState(1);
+  const [isAnimating, setIsAnimating] = useState(false);
+
+  useEffect(() => {
+    const cycleSteps = () => {
+      setIsAnimating(true);
+
+      // After 3 seconds, switch to next step
+      setTimeout(() => {
+        setActiveStep((prev) => {
+          if (prev === 3) return 1; // Cycle back to 1 after 3
+          return prev + 1;
+        });
+        setIsAnimating(false);
+      }, 3000);
+    };
+
+    // Start the cycle after a brief delay
+    const timer = setTimeout(() => {
+      cycleSteps();
+    }, 500);
+
+    // Set up interval for continuous cycling
+    const interval = setInterval(cycleSteps, 4000);
+
+    return () => {
+      clearTimeout(timer);
+      clearInterval(interval);
+    };
+  }, []);
 
   return (
     <section className="py-20 bg-white font-sans">
@@ -42,18 +71,21 @@ export default function ProcessSection() {
             title="Authorize"
             description="Let Plane to talk to your current work management software."
             isActive={activeStep === 1}
+            isAnimating={isAnimating && activeStep === 1}
             onClick={() => setActiveStep(1)}
           />
           <ProcessStep
             title="Map"
             description="Choose how entities in your current tool map to Plane's simple and familiar entities."
             isActive={activeStep === 2}
+            isAnimating={isAnimating && activeStep === 2}
             onClick={() => setActiveStep(2)}
           />
           <ProcessStep
             title="Sit back"
             description="Let Plane handle everything else. No loss, no complex configs, nothing."
             isActive={activeStep === 3}
+            isAnimating={isAnimating && activeStep === 3}
             onClick={() => setActiveStep(3)}
           />
         </div>
@@ -75,6 +107,7 @@ interface ProcessStepProps {
   title: string;
   description: string;
   isActive?: boolean;
+  isAnimating?: boolean;
   onClick?: () => void;
 }
 
@@ -82,6 +115,7 @@ function ProcessStep({
   title,
   description,
   isActive,
+  isAnimating,
   onClick,
 }: ProcessStepProps) {
   return (
@@ -94,14 +128,29 @@ function ProcessStep({
         {title}
       </h3>
 
-      {/* Very thin progress bar under title - smaller width than description */}
+      {/* Progress bar with pointed end - smaller width than description */}
       <div className="flex justify-center mb-4">
-        <div className="w-20 bg-gray-200 rounded-full h-0.5">
+        <div className="relative w-24 bg-gray-200 rounded-full h-0.5">
+          {/* Animated progress bar with pointed end */}
           <div
-            className={`bg-plane-blue h-0.5 rounded-full transition-all duration-1000 ease-out ${
-              isActive ? "w-full" : "w-0"
+            className={`bg-plane-blue h-0.5 rounded-l-full transition-all duration-3000 ease-out relative ${
+              isActive && isAnimating ? "w-full" : isActive ? "w-full" : "w-0"
             }`}
-          ></div>
+          >
+            {/* Pointed arrow end */}
+            {isActive && (
+              <div
+                className={`absolute right-0 top-1/2 transform -translate-y-1/2 w-0 h-0 transition-opacity duration-300 ${
+                  isAnimating ? "opacity-100" : "opacity-0"
+                }`}
+                style={{
+                  borderLeft: "4px solid rgb(65, 119, 253)",
+                  borderTop: "2px solid transparent",
+                  borderBottom: "2px solid transparent",
+                }}
+              />
+            )}
+          </div>
         </div>
       </div>
 
