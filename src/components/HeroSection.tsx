@@ -39,8 +39,8 @@ export default function HeroSection() {
             <div className="relative mt-16">
               <div className="mx-auto w-full max-w-4xl">
                 <img
-                  src="https://images.plane.so/imports/hero/kanban-interface.webp"
-                  alt="Plane Kanban board workflow interface"
+                  src="https://images.plane.so/imports/hero/workflow.webp"
+                  alt="Plane Kanban workflow interface showing import process"
                   className="w-full h-auto rounded-lg shadow-2xl"
                 />
               </div>
