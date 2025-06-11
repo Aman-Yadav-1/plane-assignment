@@ -9,7 +9,7 @@ import CookieConsent from "@/components/CookieConsent";
 
 const Index = () => {
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-[#FFFFFF] dark:bg-[#0A0A0A]">
       <Header />
       <HeroSection />
       <ProcessSection />

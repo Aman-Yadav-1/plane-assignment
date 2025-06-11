@@ -12,17 +12,17 @@ import {
 // Simple Button component
 function Button({ children, className = "", variant = "default", size = "default", ...props }) {
   const baseClasses = "inline-flex items-center justify-center rounded-md font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none ring-offset-background";
-  
+
   const variants = {
     default: "bg-blue-600 text-white hover:bg-blue-700",
     outline: "border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-700"
   };
-  
+
   const sizes = {
     default: "h-10 py-2 px-4",
     sm: "h-8 px-3 text-xs"
   };
-  
+
   return (
     <button
       className={`${baseClasses} ${variants[variant]} ${sizes[size]} ${className}`}
@@ -36,12 +36,11 @@ function Button({ children, className = "", variant = "default", size = "default
 // Simple PlaneBadge component
 function PlaneBadge({ children, className = "" }) {
   return (
-    <div className={`inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 ${className}`}>
+    <div className={`whitespace-nowrap inline-flex  max-w-min bg-[#E3EAFD] dark:bg-[#3368F04D] border border-[#0A0F2914] dark:border-[#FFFFFF24] text-[#133A9A] dark:text-white rounded-full px-3 py-1 text-xs font-medium ${className}`}>
       {children}
     </div>
   );
 }
-
 export default function ProcessSection() {
   const [activeStep, setActiveStep] = useState(1);
   const [isAnimating, setIsAnimating] = useState(false);
@@ -50,23 +49,21 @@ export default function ProcessSection() {
     const cycleSteps = () => {
       setIsAnimating(true);
 
-      // After 7 seconds, switch to next step
+      // After 5 seconds, switch to next step (matching the animation duration)
       setTimeout(() => {
         setActiveStep((prev) => {
-          if (prev === 3) return 1; // Cycle back to 1 after 3
+          if (prev === 3) return 1;
           return prev + 1;
         });
         setIsAnimating(false);
-      }, 7000);
+      }, 5000); // Changed from 7000 to 5000
     };
 
-    // Start the cycle after a brief delay
     const timer = setTimeout(() => {
       cycleSteps();
     }, 500);
 
-    // Set up interval for continuous cycling
-    const interval = setInterval(cycleSteps, 8000);
+    const interval = setInterval(cycleSteps, 6000); // Changed from 8000 to 6000
 
     return () => {
       clearTimeout(timer);
@@ -74,8 +71,23 @@ export default function ProcessSection() {
     };
   }, []);
 
+
   return (
     <section className="bg-white dark:bg-[#0A0A0A] font-sans min-h-screen">
+      {/* Add this style tag */}
+      <style dangerouslySetInnerHTML={{
+        __html: `
+          @keyframes progress-bar {
+            from {
+              width: 0%;
+            }
+            to {
+              width: 100%;
+            }
+          }
+        `
+      }} />
+
       <div className="max-w-6xl mx-auto px-5 py-12">
         <div className="text-center mb-16">
           <PlaneBadge className="mb-6">
@@ -91,9 +103,11 @@ export default function ProcessSection() {
             comments, files, and anything else, timestamped per the originals.
           </p>
 
-          <Button className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 text-sm font-medium rounded-xl">
-            Try it free
-          </Button>
+          <Button
+  className="whitespace-nowrap border rounded-xl backdrop-blur-3xl max-w-min border-t-2 border-[#3F76FF] dark:border-[#3F76FF] !text-white dark:text-white px-4 py-2 text-sm font-medium bg-blue-500 dark:[background:linear-gradient(0deg,rgba(63,118,255,0.12),rgba(63,118,255,0.12)),linear-gradient(rgba(63,118,255,0.2)_0%,rgba(63,118,255,0.04)_100%)]"
+>
+  Try it free
+</Button>
         </div>
 
         {/* Process Steps Navigation */}
@@ -179,13 +193,17 @@ function ProcessStep({
         {description}
       </p>
 
+      {/* Progress bar aligned with description width */}
       <div className="flex justify-center">
         {isActive && (
-          <div className="w-[80%] bg-gray-200 dark:bg-gray-600 rounded-full h-0.5">
+          <div className="w-[80%] h-0.5 mt-4">
             <div
-              className={`bg-blue-600 h-0.5 rounded-full transition-all duration-[7000ms] ease-out ${
-                isAnimating ? "w-full" : "w-0"
-              }`}
+              className="h-0.5 bg-gradient-to-r from-[#497DFF] via-[#497DFF80] to-[#6489E900] rounded-full"
+              style={{
+                width: isAnimating ? '100%' : '0%',
+                animation: isAnimating ? '5000ms linear 0s 1 normal none running progress-bar' : 'none',
+                transition: isAnimating ? 'none' : 'width 0.3s ease-out'
+              }}
             />
           </div>
         )}
@@ -193,6 +211,17 @@ function ProcessStep({
     </div>
   );
 }
+const progressBarStyle = `
+  @keyframes progress-bar {
+    from {
+      width: 0%;
+    }
+    to {
+      width: 100%;
+    }
+  }
+`;
+
 
 function AuthorizeInterface() {
   return (
@@ -450,15 +479,14 @@ function SitBackInterface() {
                     >
                       <div className="flex items-start gap-2">
                         <div
-                          className={`w-2 h-2 rounded-full mt-1 flex-shrink-0 ${
-                            columnIndex === 0
+                          className={`w-2 h-2 rounded-full mt-1 flex-shrink-0 ${columnIndex === 0
                               ? "bg-blue-500"
                               : columnIndex === 1
                                 ? "bg-gray-400"
                                 : columnIndex === 2
                                   ? "bg-purple-500"
                                   : "bg-red-500"
-                          }`}
+                            }`}
                         ></div>
                         <div className="flex-1 min-w-0">
                           <div className="h-2 bg-gray-200 dark:bg-gray-600 rounded mb-1"></div>

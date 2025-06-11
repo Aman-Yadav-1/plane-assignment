@@ -1,6 +1,8 @@
+import { Button } from "./ui/button";
+
 export default function DataIntegritySection() {
   return (
-    <section className="pt-12 pb-16 bg-white dark:bg-[#0A0A0A]">
+    <section className="pt-12 pb-10 bg-white dark:bg-[#0A0A0A]">
       <div className="max-w-6xl mx-auto px-8">
         {/* Header section */}
         <div className="text-center mb-16">
@@ -18,9 +20,11 @@ export default function DataIntegritySection() {
             Should something go wrong, just start the import again.
           </p>
 
-          <button className="bg-blue-600 hover:bg-blue-700 dark:border dark:rounded-[12px] dark:backdrop-blur-3xl dark:border-t-2 dark:border-[#3F76FF] dark:hover:border-[#3F76FF] text-white dark:text-white px-5 py-2.5 text-sm font-medium rounded-md dark:rounded-[12px] transition-colors dark:bg-gradient-to-b dark:from-[#3F76FF20] dark:to-[#3F76FF08]">
-            Try for yourself
-          </button>
+          <Button 
+  className="whitespace-nowrap border rounded-xl backdrop-blur-3xl max-w-min border-t-2 border-[#3F76FF] dark:border-[#3F76FF] text-white dark:text-white px-5 py-2.5 text-sm font-medium transition-colors hover:opacity-90 bg-blue-500 dark:[background:linear-gradient(0deg,rgba(63,118,255,0.12),rgba(63,118,255,0.12)),linear-gradient(rgba(63,118,255,0.2)_0%,rgba(63,118,255,0.04)_100%)]"
+>
+  Try for yourself
+</Button>
         </div>
 
         {/* Main visualization card */}

@@ -2,7 +2,7 @@ import { Button } from "@/components/ui/button";
 
 export default function FinalCTASection() {
   return (
-    <div className="relative z-0 overflow-hidden my-10 bg-white dark:bg-gradient-to-br dark:from-purple-900 dark:to-blue-900">
+    <div className="relative z-0 overflow-hidden my-5 bg-white dark:bg-gradient-to-br dark:from-purple-900 dark:to-blue-900">
       {/* Light mode gradient overlay */}
       <div 
         className="relative pt-20 md:pt-40 dark:hidden"
@@ -32,30 +32,28 @@ export default function FinalCTASection() {
           </div>
 
           <div className="mt-10 md:mt-16 mb-4 flex gap-2">
+          <a 
+  rel="noopener noreferrer" 
+  target="_blank" 
+  href="https://app.plane.so/sign-up"
+>
+  <div className="whitespace-nowrap border rounded-[12px] backdrop-blur-3xl max-w-min border-t-2 px-6 py-3 text-base font-medium backdrop-blur-xl !text-white dark:text-white border-[#3F76FF] dark:border-[#3F76FF]"
+    style={{
+      background: "linear-gradient(0deg, rgb(63, 118, 255), rgb(63, 118, 255)), linear-gradient(rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0.04) 100%)"
+    }}
+  >
+    See why
+  </div>
+</a>    
             <a 
-              rel="noopener noreferrer" 
-              target="_blank" 
-              href="https://app.plane.so/sign-up"
-            >
-              <div 
-                className="whitespace-nowrap border rounded-[12px] backdrop-blur-3xl max-w-min border-t-2 px-6 py-3 text-base font-medium backdrop-blur-xl text-white border-[#3F76FF]"
-                style={{
-                  background: "linear-gradient(135deg, #3F76FF 0%, #8B5CF6 100%)"
-                }}
-              >
-                See why
-              </div>
-            </a>
-            
-            <a 
-              rel="noopener noreferrer" 
-              target="_blank" 
-              href="/talk-to-sales"
-            >
-              <div className="whitespace-nowrap border rounded-[12px] backdrop-blur-3xl max-w-min px-6 py-3 text-base font-medium bg-transparent border-[#3F76FF] text-[#3F76FF] backdrop-blur-0">
-                Talk to Sales
-              </div>
-            </a>
+  rel="noopener noreferrer" 
+  target="_blank" 
+  href="/talk-to-sales"
+>
+  <div className="whitespace-nowrap border rounded-[12px] backdrop-blur-3xl max-w-min px-6 py-3 text-base font-medium bg-transparent dark:bg-[#3F76FF1F] border-[#3F76FF] dark:border-[#3F76FF80] text-[#3F76FF] dark:text-white backdrop-blur-0">
+    Talk to Sales
+  </div>
+</a>
           </div>
         </section>
       </div>

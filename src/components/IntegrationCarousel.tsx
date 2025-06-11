@@ -102,7 +102,7 @@ export default function IntegrationCarousel() {
   );
 
   return (
-    <section className="pt-16 pb-40 mt-40 bg-white dark:bg-[#0A0A0A] overflow-hidden relative transition-colors duration-300">
+    <section className="pt-16 pb-40 mt-0 bg-white dark:bg-[#0A0A0A] overflow-hidden relative transition-colors duration-300">
 
         <div className="relative w-full max-w-6xl h-[580px] flex items-center justify-center overflow-hidden mx-auto">
           {slides.map((slide, index) => {

@@ -22,7 +22,7 @@ export default function Footer() {
   const { theme, toggleTheme } = useTheme();
 
   return (
-    <footer className="bg-white dark:bg-[#0A0A0A] border-t border-gray-100 dark:border-gray-800">
+    <footer className="bg-white dark:bg-[#0A0A0A]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-7 gap-6 mb-8">
           {/* Column 1: Project + work tracking */}

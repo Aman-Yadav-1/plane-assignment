@@ -6,11 +6,13 @@ const Button = ({ children, className, ...props }) => (
   </button>
 );
 
-const PlaneBadge = ({ children, className }) => (
-  <div className={`inline-flex items-center px-3 py-1 rounded-full bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 text-xs font-medium uppercase tracking-wider ${className}`}>
-    {children}
-  </div>
-);
+function PlaneBadge({ children, className = "" }) {
+  return (
+    <div className={`whitespace-nowrap inline-flex max-w-min bg-[#E3EAFD] dark:bg-[#3368F04D] border border-[#0A0F2914] dark:border-[#FFFFFF24] text-[#133A9A] dark:text-white rounded-full px-3 py-1 text-xs font-medium ${className}`}>
+      {children}
+    </div>
+  );
+}
 
 const FlowingLine = ({ delay = 0 }) => (
   <div className="relative w-8 h-24 flex justify-center">
@@ -54,14 +56,16 @@ export default function HeroSection() {
             Switch to plane in clicks
           </h1>
 
-          <p className="text-xl text-gray-600 dark:text-gray-300 mb-10 max-w-3xl mx-auto font-normal">
+          <p className="text-xl text-gray-600 dark:text-[#FFFFFF99] mb-10 max-w-3xl mx-auto font-normal">
             Break out of chaotic, config-heavy software into Plane<br />
             with our ready importers for Jira, Linear, Asana, and more.
           </p>
 
-          <Button className="bg-blue-500 hover:bg-blue-600 dark:bg-blue-600 dark:hover:bg-blue-700 text-white px-4 py-2 text-sm font-medium rounded-xl mb-16">
-            Get started with a free workspace
-          </Button>
+          <Button 
+  className="whitespace-nowrap border rounded-xl backdrop-blur-3xl max-w-min border-t-2 border-[#3F76FF] dark:border-[#3F76FF] !text-white dark:text-white !text-[#FFFFFF] px-4 py-2 text-sm font-medium mb-16 bg-blue-500 dark:[background:linear-gradient(0deg,rgba(63,118,255,0.12),rgba(63,118,255,0.12)),linear-gradient(rgba(63,118,255,0.2)_0%,rgba(63,118,255,0.04)_100%)]"
+>
+  Get started with a free workspace
+</Button>
 
           {/* Integration Icons with Animated Lines */}
           <div className="relative mb-0">
@@ -238,7 +242,7 @@ const IntegrationIcon: React.FC<IntegrationIconProps> = ({ name, available, comi
     <div className="relative flex flex-col items-center group">
       {comingSoon && (
         <div className="absolute -top-6 left-1/2 transform -translate-x-1/2 z-10">
-          <div className="px-1.5 py-0.5 rounded-full border-1 border-blue-100 dark:border-blue-800 bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 text-xs font-medium uppercase tracking-wider whitespace-nowrap text-[10px]">
+          <div className="px-1 py-0.5 rounded-full text-[8px] border-1 border-blue-500 dark:border-blue-800 bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 font-medium uppercase tracking-wider whitespace-nowrap">
             Coming Soon
           </div>
         </div>

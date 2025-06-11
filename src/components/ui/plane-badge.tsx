@@ -9,7 +9,7 @@ export function PlaneBadge({ children, className }: BadgeProps) {
   return (
     <div
       className={cn(
-        "inline-flex items-center px-3 py-1 rounded-full bg-plane-blue-light text-plane-blue-dark text-xs font-medium uppercase tracking-wider",
+        "whitespace-nowrap max-w-min bg-[#E3EAFD] dark:bg-[#3368F04D] border border-[#0A0F2914] dark:border-[#FFFFFF24] text-[#133A9A] dark:text-white rounded-full px-3 py-1 text-xs font-medium",
         className,
       )}
     >
