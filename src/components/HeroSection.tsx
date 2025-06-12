@@ -15,29 +15,32 @@ function PlaneBadge({ children, className = "" }) {
 }
 
 const FlowingLine = ({ delay = 0 }) => (
-  <div className="relative w-8 h-24 flex justify-center">
-    {/* Static blue glow around entire line - outer */}
-    <div className="absolute w-6 h-full left-1/2 transform -translate-x-1/2 bg-blue-400 opacity-15 blur-lg" />
-
-    {/* Static blue glow around entire line - inner */}
-    <div className="absolute w-3 h-full left-1/2 transform -translate-x-1/2 bg-blue-500 opacity-25 blur-md" />
-
-    {/* Static line core */}
-    <div className="absolute w-0.5 h-full left-1/2 transform -translate-x-1/2 bg-gray-300 dark:bg-gray-600" />
-
-    <div
-      className="absolute w-0.5 h-12 left-1/2 transform -translate-x-1/2 bg-gradient-to-b from-transparent via-blue-500 to-transparent opacity-90"
-      style={{
-        animation: 'flowDown 3s ease-in-out infinite',
-        animationDelay: `${delay}s`,
-        top: '0px'
-      }}
-    />
+  <div className="relative z-0 w-full h-32 mt-0.5 flex justify-center bg-gradient-to-l from-white dark:from-[#0a0a0a] via-[#dde5fd] dark:via-[#151c30] to-white dark:to-[#0a0a0a]">
+    <div className="w-[2px] h-full bg-gradient-to-b from-[#dde5fd] to-[#7b97e0] dark:from-[#151e33] dark:to-[#3050a1] relative">
+      <div
+        className="h-2 w-full bg-blue-500 animate-rain rounded-full"
+        style={{ animationDelay: `${delay}ms` }}
+      />
+    </div>
     <style>{`
-      @keyframes flowDown {
-        0% { transform: translateY(-50%); opacity: 0; }
-        50% { opacity: 1; }
-        100% { transform: translateY(150%); opacity: 0; }
+      @keyframes rain {
+        0% { 
+          transform: translateY(-8px); 
+          opacity: 0; 
+        }
+        10% { 
+          opacity: 1; 
+        }
+        90% { 
+          opacity: 1; 
+        }
+        100% { 
+          transform: translateY(120px); 
+          opacity: 0; 
+        }
+      }
+      .animate-rain {
+        animation: rain 2s ease-in-out infinite;
       }
     `}</style>
   </div>
@@ -61,21 +64,21 @@ export default function HeroSection() {
             with our ready importers for Jira, Linear, Asana, and more.
           </p>
 
-          <Button 
-  className="whitespace-nowrap border rounded-xl backdrop-blur-3xl max-w-min border-t-2 border-[#3F76FF] dark:border-[#3F76FF] !text-white dark:text-white !text-[#FFFFFF] px-4 py-2 text-sm font-medium mb-16 bg-blue-500 dark:[background:linear-gradient(0deg,rgba(63,118,255,0.12),rgba(63,118,255,0.12)),linear-gradient(rgba(63,118,255,0.2)_0%,rgba(63,118,255,0.04)_100%)]"
->
-  Get started with a free workspace
-</Button>
+          <Button
+            className="whitespace-nowrap border rounded-xl backdrop-blur-3xl max-w-min border-t-2 border-[#3F76FF] dark:border-[#3F76FF] !text-white dark:text-white !text-[#FFFFFF] px-4 py-2 text-sm font-medium mb-16 bg-blue-500 dark:[background:linear-gradient(0deg,rgba(63,118,255,0.12),rgba(63,118,255,0.12)),linear-gradient(rgba(63,118,255,0.2)_0%,rgba(63,118,255,0.04)_100%)]"
+          >
+            Get started with a free workspace
+          </Button>
 
           {/* Integration Icons with Animated Lines */}
-          <div className="relative mb-0">
+          <div className="relative mt-0">
             <div className="flex justify-center items-end gap-8">
-              <IntegrationIcon name="Jira" available={true} comingSoon={undefined} />
-              <IntegrationIcon name="Linear" available={true} comingSoon={undefined} />
-              <IntegrationIcon name="Asana" available={true} comingSoon={undefined} />
-              <IntegrationIcon name="GitHub" comingSoon={true} available={undefined} />
-              <IntegrationIcon name="ClickUp" comingSoon={true} available={undefined} />
-              <IntegrationIcon name="Notion" comingSoon={true} available={undefined} />
+              <IntegrationIcon name="Jira" available={true} comingSoon={undefined} delay="450ms" />
+              <IntegrationIcon name="Linear" available={true} comingSoon={undefined} delay="300ms" />
+              <IntegrationIcon name="Asana" available={true} comingSoon={undefined} delay="150ms" />
+              <IntegrationIcon name="GitHub" comingSoon={true} available={undefined} delay="0ms" />
+              <IntegrationIcon name="ClickUp" comingSoon={true} available={undefined} delay="150ms" />
+              <IntegrationIcon name="Notion" comingSoon={true} available={undefined} delay="300ms" />
             </div>
           </div>
 
@@ -212,8 +215,8 @@ interface IntegrationIconProps {
   name: string;
   available?: boolean;
   comingSoon?: boolean;
+  delay?: string;
 }
-
 const IntegrationIcon: React.FC<IntegrationIconProps> = ({ name, available, comingSoon }) => {
   const getIcon = (name: string) => {
     const icons: { [key: string]: string } = {
@@ -248,11 +251,10 @@ const IntegrationIcon: React.FC<IntegrationIconProps> = ({ name, available, comi
         </div>
       )}
 
-      <div className={`w-16 h-16 rounded-xl flex items-center justify-center border-2 transition-all duration-300 hover:scale-110 ${
-        available 
-          ? 'bg-white dark:bg-gray-800 border-blue-200 dark:border-blue-600 shadow-lg' 
+      <div className={`w-16 h-16 rounded-xl flex items-center justify-center border-2 transition-all duration-300 hover:scale-110 ${available
+          ? 'bg-white dark:bg-gray-800 border-blue-200 dark:border-blue-600 shadow-lg'
           : 'bg-gray-50 dark:bg-gray-700 border-gray-200 dark:border-gray-600'
-      }`}>
+        }`}>
         {getIcon(name)}
       </div>
 
@@ -317,9 +319,8 @@ interface ProgressStepProps {
 }
 
 const ProgressStep: React.FC<ProgressStepProps> = ({ active = false }) => (
-  <div className={`w-8 h-8 rounded-full flex items-center justify-center ${
-    active ? 'bg-blue-500 dark:bg-blue-600' : 'bg-gray-300 dark:bg-gray-600'
-  }`}>
+  <div className={`w-8 h-8 rounded-full flex items-center justify-center ${active ? 'bg-blue-500 dark:bg-blue-600' : 'bg-gray-300 dark:bg-gray-600'
+    }`}>
     <div className="w-4 h-4 bg-white rounded" />
   </div>
 );
