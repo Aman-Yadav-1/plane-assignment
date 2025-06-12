@@ -8,21 +8,21 @@ export default function IntegrationCarousel() {
     {
       platform: "Jira",
       description: "Jira Cloud. Jira Server. Jira Whatever. Just move to Plane in a few clicks. Facts.",
-      platformIcon: "🔷",
+      platformIcon: "/jira.png",
       platformColor: "from-blue-400 to-blue-600",
       bgGradient: "from-blue-50 via-purple-50 to-blue-100"
     },
     {
       platform: "Linear",
       description: "Bring all your data in Linear over to Plane and experience the exponential with less-their-opinion-more-your flexibility.",
-      platformIcon: "⚡",
+      platformIcon: "/linear.png",
       platformColor: "from-purple-400 to-purple-600", 
       bgGradient: "from-purple-50 via-blue-50 to-purple-100"
     },
     {
       platform: "Asana",
       description: "Don't lose any of your data when you lose that uncomfortable asana for a totally flexible work pose.",
-      platformIcon: "⚪",
+      platformIcon: "/Asana.png",
       platformColor: "from-red-400 to-red-600",
       bgGradient: "from-pink-50 via-red-50 to-pink-100"
     },
@@ -49,9 +49,9 @@ export default function IntegrationCarousel() {
       case "center":
         return "translateX(0) scale(1)";
       case "left":
-        return "translateX(-760px) scale(0.9)";
+        return "translateX(-760px) scale(0.8)";
       case "right":
-        return "translateX(760px) scale(0.9)";
+        return "translateX(760px) scale(0.8)";
       default:
         return "translateX(0) scale(0.5) translateY(100px)";
     }
@@ -82,15 +82,6 @@ export default function IntegrationCarousel() {
     }
   };
 
-  // Custom Asana icon component
-  const AsanaIcon = ({ size = 24 }) => (
-    <svg width={size} height={size} viewBox="0 0 24 24" fill="none">
-      <circle cx="12" cy="7" r="3" fill="#f56565"/>
-      <circle cx="7" cy="17" r="3" fill="#f56565"/>
-      <circle cx="17" cy="17" r="3" fill="#f56565"/>
-    </svg>
-  );
-
   // Custom Plane icon component  
   const PlaneIcon = ({ size = 20 }) => (
     <svg width={size} height={size} viewBox="0 0 24 24" fill="none">
@@ -119,8 +110,8 @@ export default function IntegrationCarousel() {
                   transform: getTransform(position),
                   opacity: getOpacity(position),
                   zIndex: getZIndex(position),
-                  width: "700px",
-                  height: "560px",
+                  width: "760px",
+                  height: "550px",
                 }}
                 onClick={() => handleSlideClick(index)}
               >
@@ -166,15 +157,13 @@ export default function IntegrationCarousel() {
                         {/* Source Platform */}
                         <div className={`
                           w-20 h-20 rounded-2xl shadow-lg flex items-center justify-center border-2 border-white/20 dark:border-gray-700/50
-                          bg-gradient-to-br ${slide.platformColor}
+                          bg-white dark:bg-gray-800
                         `}>
-                          {slide.platform === "Asana" ? (
-                            <AsanaIcon size={32} />
-                          ) : (
-                            <div className="text-white text-2xl font-bold">
-                              {slide.platform === "Jira" ? "🔷" : "⚡"}
-                            </div>
-                          )}
+                          <img 
+                            src={slide.platformIcon} 
+                            alt={`${slide.platform} icon`}
+                            className="w-10 h-10 object-contain"
+                          />
                         </div>
 
                         {/* Arrow */}
@@ -213,15 +202,13 @@ export default function IntegrationCarousel() {
                     <div className="flex items-center gap-4 mb-4">
                       <div className={`
                         w-10 h-10 rounded-xl flex items-center justify-center border border-gray-200 dark:border-gray-600
-                        bg-gradient-to-br ${slide.platformColor}
+                        bg-white dark:bg-gray-800
                       `}>
-                        {slide.platform === "Asana" ? (
-                          <AsanaIcon size={16} />
-                        ) : (
-                          <div className="text-white text-sm font-bold">
-                            {slide.platform === "Jira" ? "🔷" : "⚡"}
-                          </div>
-                        )}
+                        <img 
+                          src={slide.platformIcon} 
+                          alt={`${slide.platform} icon`}
+                          className="w-6 h-6 object-contain"
+                        />
                       </div>
                       <h3 className="text-xl font-bold text-gray-900 dark:text-white">
                         {slide.platform}
