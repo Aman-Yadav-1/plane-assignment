@@ -15,7 +15,7 @@ function PlaneBadge({ children, className = "" }) {
 }
 
 const FlowingLine = ({ delay = 0 }) => (
-  <div className="relative z-0 w-full h-32 mt-0.5 flex justify-center bg-gradient-to-l from-white dark:from-[#0a0a0a] via-[#dde5fd] dark:via-[#151c30] to-white dark:to-[#0a0a0a]">
+  <div className="relative z-0 w-full h-32 dark:mt-0.5 flex justify-center bg-gradient-to-l from-white dark:from-[#0a0a0a] via-[#dde5fd] dark:via-[#151c30] to-white dark:to-[#0a0a0a]">
     <div className="w-[2px] h-full bg-gradient-to-b from-[#dde5fd] to-[#7b97e0] dark:from-[#151e33] dark:to-[#3050a1] relative">
       <div
         className="h-2 w-full bg-blue-500 animate-rain rounded-full"
